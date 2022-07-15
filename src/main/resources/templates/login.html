@@ -1,34 +1,49 @@
 <html>
-  <head th:replace="~{base :: head}"></head>
+  <head th:replace="~{base :: head}">
+  </head>
+
+  <header class="navbar cor">
+    <div class="container">
+        <img class="rounded mx-auto d-block" src="logo-tgs.png" alt="Logo Do Site" width="200" height="200">
+    </div>
+ 
+  </header>
 
   <body>
     <div class="container">
-      <form class="card-body" id="form" action="/login" method="POST">
-        <div class="mb-3">
-          <input 
-            type="text" 
-            class="form-control" 
-            id="email" 
-            placeholder="Email"
-            name="email"
-          >
-        </div>
-        <div class="mb-3">
-          <input 
-            type="password" 
-            class="form-control" 
-            id="senha" 
-            placeholder="Senha"
-            name="senha"
-          >
-        </div>
-
-        <div th:if="${erro != null}" th:text="${erro}" class="alert alert-danger" role="alert"></div>
-        <button 
-          type="submit" 
-          class="btn btn-primary"
-        >Logar</button>
-      </form>
-    </div>
+      <div class="card mt-5 w-50 m-auto">
+        <form 
+          class="p-5 d-flex align-items-center flex-column" 
+          id="form" 
+          action="/login" 
+          method="POST"
+        >
+          <div class="mb-3 w-75">
+            <input 
+              type="text" 
+              class="form-control text-center" 
+              id="email" 
+              placeholder="Email"
+              name="email"
+            >
+          </div>
+          <div class="mb-3 w-75">
+            <input 
+              type="password" 
+              class="form-control text-center" 
+              id="senha" 
+              placeholder="Senha"
+              name="senha"
+            >
+          </div>
+  
+          <div th:if="${erro != null}" th:text="${erro}" class="alert alert-danger" role="alert"></div>
+          <button 
+            type="submit" 
+            class="btn btn-primary w-25"
+          >Logar</button>
+        </form>
+      </div>
+    </div> 
   </body>
 </html>
