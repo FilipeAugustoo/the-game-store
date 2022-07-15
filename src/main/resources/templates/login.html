@@ -1,0 +1,34 @@
+<html>
+  <head th:replace="~{base :: head}"></head>
+
+  <body>
+    <div class="container">
+      <form class="card-body" id="form" action="/login" method="POST">
+        <div class="mb-3">
+          <input 
+            type="text" 
+            class="form-control" 
+            id="email" 
+            placeholder="Email"
+            name="email"
+          >
+        </div>
+        <div class="mb-3">
+          <input 
+            type="password" 
+            class="form-control" 
+            id="senha" 
+            placeholder="Senha"
+            name="senha"
+          >
+        </div>
+
+        <div th:if="${erro != null}" th:text="${erro}" class="alert alert-danger" role="alert"></div>
+        <button 
+          type="submit" 
+          class="btn btn-primary"
+        >Logar</button>
+      </form>
+    </div>
+  </body>
+</html>
