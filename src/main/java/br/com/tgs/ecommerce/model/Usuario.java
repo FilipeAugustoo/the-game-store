@@ -18,5 +18,5 @@ public class Usuario {
 
   private String username;
 
-  private Integer saldo;
+  private Integer saldo = 0;
 }
