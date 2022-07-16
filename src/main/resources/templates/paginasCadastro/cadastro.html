@@ -1,0 +1,63 @@
+<html>
+  <head th:replace="~{base :: head}"> </head>
+
+  <header class="navbar cor">
+    <div class="container">
+      <img
+        class="rounded mx-auto d-block"
+        src="logo-tgs.png"
+        alt="Logo Do Site"
+        width="200"
+        height="200"
+      />
+    </div>
+  </header>
+
+  <body class="color-body">
+    <div class="container">
+      <div class="card mt-5 w-50 m-auto">
+        <h1 class="text-center mt-3">Cadastro</h1>
+        <form
+          class="p-5 d-flex align-items-center flex-column"
+          id="form"
+          action="/cadastro"
+          method="POST"
+        >
+          <div class="mb-3 w-75">
+            <input
+              type="email"
+              class="form-control text-center"
+              id="email"
+              placeholder="Email"
+              name="email"
+            />            
+          </div>
+
+          <div th:if="${erro != null}" th:text="${erro}" class="alert alert-danger" role="alert"></div>
+
+          <div class="mb-3 w-75">
+            <input
+              type="text"
+              class="form-control text-center"
+              id="username"
+              placeholder="Username"
+              name="username"
+            />
+          </div>
+
+          <div class="mb-3 w-75">
+            <input
+              type="password"
+              class="form-control text-center"
+              id="senha"
+              placeholder="Senha"
+              name="senha"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary w-25">Cadastrar</button>
+          <span class="mt-2">Já tem uma conta? <a class="text-decoration-none" href="/login">Faça o login</a></span>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

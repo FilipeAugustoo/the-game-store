@@ -9,19 +9,37 @@ import br.com.tgs.ecommerce.repository.UsuarioRepository;
 
 @Service
 public class UsuarioService {
-  
+
   @Autowired
   private UsuarioRepository repository;
 
   public String logar(Model model, String email, String senha) {
-    Usuario user = this.repository.Login(email, senha);
+    Usuario user = repository.Login(email, senha);
 
-    if(user != null) {
+    if (user != null) {
       return "redirect:/home";
     }
-    
+
     model.addAttribute("erro", "Usuário ou senha inválidos");
 
-    return "login";
+    return "paginasCadastro/login";
+  }
+
+  public String cadastrar(Model model, Usuario usuarioCadastrado) {
+
+    Boolean emailNaoExiste = repository.findByEmail(usuarioCadastrado.getEmail())
+        .stream()
+        .allMatch(email -> email.equals(usuarioCadastrado));
+
+    if (emailNaoExiste) {
+      repository.save(usuarioCadastrado);
+      model.addAttribute("sucesso", "Conta criada com sucesso");
+      return "paginasCadastro/login";   
+    }
+
+    model.addAttribute("erro", "Esse email já foi cadastrado");
+
+    return "paginasCadastro/cadastro";
+
   }
 }
